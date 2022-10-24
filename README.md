@@ -1,86 +1,79 @@
-# ethereum-unit-converter
-
-> [Ethereum](https://ethereum.org/) unit converter in JavaScript
-
-[![License](http://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/miguelmota/ethereum-unit-converter/master/LICENSE)
-[![Build Status](https://travis-ci.org/miguelmota/ethereum-unit-converter.svg?branch=master)](https://travis-ci.org/miguelmota/ethereum-unit-converter)
-[![dependencies Status](https://david-dm.org/miguelmota/ethereum-unit-converter/status.svg)](https://david-dm.org/miguelmota/ethereum-unit-converter)
-[![NPM version](https://badge.fury.io/js/ethereum-unit-converter.svg)](http://badge.fury.io/js/ethereum-unit-converter)
-
-## Example
-
-[https://lab.miguelmota.com/ethereum-unit-converter](https://lab.miguelmota.com/ethereum-unit-converter)
+# ₡ORE Unit Converter
 
 ## Install
 
 ```bash
-npm install ethereum-unit-converter
+npm i core-unit
 ```
 
 ## Getting started
 
+Example №1
+
 ```js
-const convert = require('ethereum-unit-converter')
-
-const result = convert(1, 'ether')
-
+const convert = require('core-unit')
+const result = convert(1, 'core')
 console.log(JSON.stringify(result, null, 2))
 ```
 
 Output:
 
-```bash
+```json
 {
-  "wei": "1000000000000000000",
-  "kwei": "1000000000000000",
-  "mwei": "1000000000000",
-  "gwei": "1000000000",
-  "szabo": "1000000",
-  "finney": "1000",
-  "ether": "1",
-  "kether": "0.001",
-  "mether": "0.000001",
-  "gether": "0.000000001",
-  "tether": "0.000000000001"
+  "ore": "1000000000000000000",
+  "wav": "1000000000000000",
+  "grav": "1000000000000",
+  "nucle": "1000000000",
+  "atom": "1000000",
+  "moli": "1000",
+  "core": "1",
+  "aer": "0.001",
+  "orb": "0.000001",
+  "plano": "0.000000001",
+  "tera": "0.000000000001",
+  "sola": "0.000000000000001",
+  "galx": "0.000000000000000001",
+  "cluster": "0.000000000000000000001",
+  "supermatter": "0.000000000000000000000001"
 }
 ```
 
-Another example:
+Example №2
 
 ```js
-const convert = require('ethereum-unit-converter')
-
-const result = convert(30, 'gwei')
-
+const convert = require('core-unit')
+const result = convert(30, 'nucle')
 console.log(JSON.stringify(result, null, 2))
 ```
 
-Output
+Output:
 
-```bash
+```json
 {
-  "wei": "30000000000",
-  "kwei": "30000000",
-  "mwei": "30000",
-  "gwei": "30",
-  "szabo": "0.03",
-  "finney": "0.00003",
-  "ether": "0.00000003",
-  "kether": "0.00000000003",
-  "mether": "0.00000000000003",
-  "gether": "0.00000000000000003",
-  "tether": "0.00000000000000000003"
+  "ore": "30000000000",
+  "wav": "30000000",
+  "grav": "30000",
+  "nucle": "30",
+  "atom": "0.03",
+  "moli": "0.00003",
+  "core": "0.00000003",
+  "aer": "0.00000000003",
+  "orb": "0.00000000000003",
+  "plano": "0.00000000000000003",
+  "tera": "0.00000000000000000003",
+  "sola": "0.00000000000000000000003",
+  "galx": "0.00000000000000000000000003",
+  "cluster": "0.00000000000000000000000000003",
+  "supermatter": "0.00000000000000000000000000000003"
 }
 ```
 
 Specific output examples:
 
 ```js
-console.log(convert(1, 'ether', 'wei')) // 1000000000000000000
-
-console.log(convert(30, 'gwei', 'ether')) // 0.00000003
-
-console.log(convert(30, 'gwei', 'wei')) // 30000000000
+console.log(convert(1, 'core', 'ore')) // 1000000000000000000
+console.log(convert(30, 'nucle', 'core')) // 0.00000003
+console.log(convert(30, 'nucle', 'ore')) // 30000000000
 ```
 
 ## CLI
@@ -88,19 +81,19 @@ console.log(convert(30, 'gwei', 'wei')) // 30000000000
 Install
 
 ```bash
-npm install -g ethereum-unit-converter
+npm i -g core-unit
 ```
 
 ### Getting started
 
 ```bash
-$ ether-converter {value} {unit}
+$ core-unit {value} {unit}
 ```
 
 ### Examples
 
 ```bash
-$ ether-converter 10 ether
+$ core-unit 10 core
 
 wei     10000000000000000000
 kwei    10000000000000000
@@ -116,7 +109,7 @@ tether  0.00000000001
 ```
 
 ```bash
-$ ether-converter 30 gwei
+$ core-unit 30 nucle
 
 wei     30000000000
 kwei    30000000
@@ -132,19 +125,13 @@ tether  0.00000000000000000003
 ```
 
 ```bash
-$ ether-converter 1 ether wei
+$ core-unit 1 core ore
 
 1000000000000000000
 ```
 
 ```bash
-$ ether-converter 1 ether wei
-
-1000000000000000000
-```
-
-```bash
-$ ether-converter 30 gwei ether
+$ core-unit 30 nucle core
 
 0.00000003
 ```
@@ -152,7 +139,7 @@ $ ether-converter 30 gwei ether
 Piping value example:
 
 ```bash
-$ echo 1000000000000000000 | ether-converter wei ether
+$ echo 1000000000000000000 | core-unit ore core
 
 1
 ```
@@ -160,23 +147,37 @@ $ echo 1000000000000000000 | ether-converter wei ether
 Using decimal numbers example:
 
 ```bash
-$ ether-converter 1000000 -6 ether
+$ core-unit 1000000 -6 core
 
 1
 ```
 
 ```bash
-$ ether-converter 1000000 -6 1
+$ core-unit 1000000 -6 1
 
 1
 ```
 
 ```bash
-$ ether-converter 1 1 -6
+$ core-unit 1 1 -6
 
 1000000
 ```
 
+## Contributions
+
+Feel free to contribute in any way.
+
+We appreciate:
+- Fork [this repository](https://github.com/cryptohub-digital/core-unit/fork)
+- Open [pull request](https://github.com/cryptohub-digital/core-unit/pulls)
+- Send us some Øres / ₡ores: [cb7147879011ea207df5b35a24ca6f0859dcfb145999](https://blockindex.net/address/cb7147879011ea207df5b35a24ca6f0859dcfb145999)
+- Star this repository
+
+## Epigram
+
+> 「Cryptoni Confidimus」
+
 ## License
 
-[MIT](LICENSE)
+Licensed under the [CORE](LICENSE) License.

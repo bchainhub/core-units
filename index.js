@@ -1,18 +1,23 @@
-const BN = require('bignumber.js')
+const BigNumber = require('bignumber.js')
+BigNumber.config({ RANGE: [-1e+9, 1e+9] })
 
 function parseUnit (unit) {
   const decimalsToUnit = {
-    '-18': 'wei',
-    '-15': 'kwei',
-    '-12': 'mwei',
-    '-9': 'gwei',
-    '-6': 'szabo',
-    '-3': 'finney',
-    1: 'ether',
-    3: 'kether',
-    6: 'mether',
-    9: 'gether',
-    12: 'tether'
+    '-18': 'ore',
+    '-15': 'wav',
+    '-12': 'grav',
+    '-9': 'nucle',
+    '-6': 'atom',
+    '-3': 'moli',
+    1: 'core',
+    3: 'aer',
+    6: 'orb',
+    9: 'plano',
+    12: 'tera',
+    15: 'sola',
+    18: 'galx',
+    21: 'cluster',
+    24: 'supermatter'
   }
   if (typeof unit === 'string') {
     unit = unit.trim().toLowerCase()
@@ -23,7 +28,7 @@ function parseUnit (unit) {
   return unit
 }
 
-function convertToEther (value, unit) {
+function convertToCore (value, unit) {
   if (value === undefined) {
     throw TypeError('value is required')
   }
@@ -32,20 +37,25 @@ function convertToEther (value, unit) {
     throw TypeError('unit is required')
   }
 
-  const v = new BN(value)
-  if (unit === 'eth') unit = 'ether'
+  const v = new BigNumber(value)
+  if (unit === '₡') unit = 'core'
+  if (unit === 'ø') unit = 'ore'
 
-  if (unit === 'wei') return v.times(new BN(0.000000000000000001))
-  if (unit === 'kwei') return v.times(new BN(0.000000000000001))
-  if (unit === 'mwei') return v.times(new BN(0.000000000001))
-  if (unit === 'gwei') return v.times(new BN(0.000000001))
-  if (unit === 'szabo') return v.times(new BN(0.000001))
-  if (unit === 'finney') return v.times(new BN(0.001))
-  if (unit === 'ether') return v.times(new BN(1))
-  if (unit === 'kether') return v.times(new BN(1000))
-  if (unit === 'mether') return v.times(new BN(1000000))
-  if (unit === 'gether') return v.times(new BN(1000000000))
-  if (unit === 'tether') return v.times(new BN(1000000000000))
+  if (unit === 'ore') return v.times(new BigNumber(0.000000000000000001))
+  if (unit === 'wav') return v.times(new BigNumber(0.000000000000001))
+  if (unit === 'grav') return v.times(new BigNumber(0.000000000001))
+  if (unit === 'nucle') return v.times(new BigNumber(0.000000001))
+  if (unit === 'atom') return v.times(new BigNumber(0.000001))
+  if (unit === 'moli') return v.times(new BigNumber(0.001))
+  if (unit === 'core') return v.times(new BigNumber(1))
+  if (unit === 'aer') return v.times(new BigNumber(1000))
+  if (unit === 'orb') return v.times(new BigNumber(1000000))
+  if (unit === 'plano') return v.times(new BigNumber(1000000000))
+  if (unit === 'tera') return v.times(new BigNumber(1000000000000))
+  if (unit === 'sola') return v.times(new BigNumber(1000000000000000))
+  if (unit === 'galx') return v.times(new BigNumber(1000000000000000000))
+  if (unit === 'cluster') return v.times(new BigNumber(1000000000000000000000))
+  if (unit === 'supermatter') return v.times(new BigNumber(1000000000000000000000000))
 
   throw TypeError('Invalid unit')
 }
@@ -53,37 +63,47 @@ function convertToEther (value, unit) {
 function converter (value, unit, toUnit) {
   unit = parseUnit(unit)
   toUnit = parseUnit(toUnit)
-  const v = convertToEther(value, unit)
-  if (unit === 'eth') unit = 'ether'
-  if (toUnit === 'eth') toUnit = 'ether'
+  const v = convertToCore(value, unit)
+  if (unit === '₡') unit = 'core'
+  if (toUnit === '₡') toUnit = 'core'
+  if (unit === 'ø') unit = 'ore'
+  if (toUnit === 'ø') toUnit = 'ore'
 
   const result = {
-    wei: null,
-    kwei: null,
-    mwei: null,
-    gwei: null,
-    szabo: null,
-    finney: null,
-    ether: null,
-    kether: null,
-    mether: null,
-    gether: null,
-    tether: null
+    ore: null,
+    wav: null,
+    grav: null,
+    nucle: null,
+    atom: null,
+    moli: null,
+    core: null,
+    aer: null,
+    orb: null,
+    plano: null,
+    tera: null,
+    sola: null,
+    galx: null,
+    cluster: null,
+    supermatter: null
   }
 
-  result[unit] = new BN(value).toString(10)
+  result[unit] = new BigNumber(value).toFixed()
 
-  if (unit !== 'wei') { result.wei = v.times(new BN(1000000000000000000)).toString(10) }
-  if (unit !== 'kwei') { result.kwei = v.times(new BN(1000000000000000)).toString(10) }
-  if (unit !== 'mwei') { result.mwei = v.times(new BN(1000000000000)).toString(10) }
-  if (unit !== 'gwei') { result.gwei = v.times(new BN(1000000000)).toString(10) }
-  if (unit !== 'szabo') { result.szabo = v.times(new BN(1000000)).toString(10) }
-  if (unit !== 'finney') { result.finney = v.times(new BN(1000)).toString(10) }
-  if (unit !== 'ether') { result.ether = v.times(new BN(1)).toString(10) }
-  if (unit !== 'kether') { result.kether = v.times(new BN(0.001)).toString(10) }
-  if (unit !== 'mether') { result.mether = v.times(new BN(0.000001)).toString(10) }
-  if (unit !== 'gether') { result.gether = v.times(new BN(0.000000001)).toString(10) }
-  if (unit !== 'tether') { result.tether = v.times(new BN(0.000000000001)).toString(10) }
+  if (unit !== 'ore') { result.ore = v.times(new BigNumber(1000000000000000000)).toFixed() }
+  if (unit !== 'wav') { result.wav = v.times(new BigNumber(1000000000000000)).toFixed() }
+  if (unit !== 'grav') { result.grav = v.times(new BigNumber(1000000000000)).toFixed() }
+  if (unit !== 'nucle') { result.nucle = v.times(new BigNumber(1000000000)).toFixed() }
+  if (unit !== 'atom') { result.atom = v.times(new BigNumber(1000000)).toFixed() }
+  if (unit !== 'moli') { result.moli = v.times(new BigNumber(1000)).toFixed() }
+  if (unit !== 'core') { result.core = v.times(new BigNumber(1)).toFixed() }
+  if (unit !== 'aer') { result.aer = v.times(new BigNumber(0.001)).toFixed() }
+  if (unit !== 'orb') { result.orb = v.times(new BigNumber(0.000001)).toFixed() }
+  if (unit !== 'plano') { result.plano = v.times(new BigNumber(0.000000001)).toFixed() }
+  if (unit !== 'tera') { result.tera = v.times(new BigNumber(0.000000000001)).toFixed() }
+  if (unit !== 'sola') { result.sola = v.times(new BigNumber(0.000000000000001)).toFixed() }
+  if (unit !== 'galx') { result.galx = v.times(new BigNumber(0.000000000000000001)).toFixed() }
+  if (unit !== 'cluster') { result.cluster = v.times(new BigNumber(0.000000000000000000001)).toFixed() }
+  if (unit !== 'supermatter') { result.supermatter = v.times(new BigNumber(0.000000000000000000000001)).toFixed() }
 
   if (toUnit) {
     if (result[toUnit] === undefined) {

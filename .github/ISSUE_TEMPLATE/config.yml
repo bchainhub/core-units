@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Readme
+    url: https://github.com/cryptohub-digital/core-unit#readme
+    about: Read more about the code
+  - name: CLI tool
+    url: https://github.com/cryptohub-digital/core-unit#cli
+    about: Get information about the Command-line interface

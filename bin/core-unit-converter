@@ -34,17 +34,21 @@ if (process.stdin) {
 }
 
 const powUnits = {
-  '-18': 'wei',
-  '-15': 'kwei',
-  '-12': 'mwei',
-  '-9': 'gwei',
-  '-6': 'szabo',
-  '-3': 'finney',
-  1: 'ether',
-  3: 'kether',
-  6: 'mether',
-  9: 'gether',
-  12: 'kether'
+  '-18': 'ore',
+  '-15': 'wav',
+  '-12': 'grav',
+  '-9': 'nucle',
+  '-6': 'atom',
+  '-3': 'moli',
+  1: 'core',
+  3: 'aer',
+  6: 'orb',
+  9: 'plano',
+  12: 'tera',
+  15: 'sola',
+  18: 'galx',
+  21: 'cluster',
+  24: 'supermatter'
 }
 
 function run (value, unit, toUnit) {
