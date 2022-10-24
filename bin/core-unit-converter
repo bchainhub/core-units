@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { BigNumber } = require('ethers')
+const { BigNumber } = require('bignumber.js')
 const convert = require('../')
 
 if (process.stdin) {
@@ -8,7 +8,7 @@ if (process.stdin) {
   process.stdin.resume()
   let content = ''
   process.stdin.on('data', (buf) => {
-    content += buf.toString()
+    content += buf.toFixed()
   })
   setTimeout(() => {
     content = content.trim()
@@ -64,7 +64,7 @@ function run (value, unit, toUnit) {
 
   try {
     if (value.startsWith('0x')) {
-      value = BigNumber.from(value).toString()
+      value = BigNumber.from(value).toFixed()
     }
     value = value.replace(/[^0-9.e+-]+/gi, '')
     if (powUnits[unit]) {
