@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-npm i core-unit
+npm i core-units
 ```
 
 ## Getting started
@@ -11,7 +11,7 @@ npm i core-unit
 Example №1
 
 ```js
-const convert = require('core-unit')
+const convert = require('core-units')
 const result = convert(1, 'core')
 console.log(JSON.stringify(result, null, 2))
 ```
@@ -41,7 +41,7 @@ Output:
 Example №2
 
 ```js
-const convert = require('core-unit')
+const convert = require('core-units')
 const result = convert(30, 'nucle')
 console.log(JSON.stringify(result, null, 2))
 ```
@@ -81,19 +81,19 @@ console.log(convert(30, 'nucle', 'ore')) // 30000000000
 Install
 
 ```bash
-npm i -g core-unit
+npm i -g core-units
 ```
 
 ### Getting started
 
 ```bash
-$ core-unit {value} {unit}
+$ core-units {value} {unit}
 ```
 
 ### Examples
 
 ```bash
-$ core-unit 10 core
+$ core-units 10 core
 
 wei     10000000000000000000
 kwei    10000000000000000
@@ -109,7 +109,7 @@ tether  0.00000000001
 ```
 
 ```bash
-$ core-unit 30 nucle
+$ core-units 30 nucle
 
 wei     30000000000
 kwei    30000000
@@ -125,13 +125,13 @@ tether  0.00000000000000000003
 ```
 
 ```bash
-$ core-unit 1 core ore
+$ core-units 1 core ore
 
 1000000000000000000
 ```
 
 ```bash
-$ core-unit 30 nucle core
+$ core-units 30 nucle core
 
 0.00000003
 ```
@@ -139,7 +139,7 @@ $ core-unit 30 nucle core
 Piping value example:
 
 ```bash
-$ echo 1000000000000000000 | core-unit ore core
+$ echo 1000000000000000000 | core-units ore core
 
 1
 ```
@@ -147,19 +147,19 @@ $ echo 1000000000000000000 | core-unit ore core
 Using decimal numbers example:
 
 ```bash
-$ core-unit 1000000 -6 core
+$ core-units 1000000 -6 core
 
 1
 ```
 
 ```bash
-$ core-unit 1000000 -6 1
+$ core-units 1000000 -6 1
 
 1
 ```
 
 ```bash
-$ core-unit 1 1 -6
+$ core-units 1 1 -6
 
 1000000
 ```
@@ -169,8 +169,8 @@ $ core-unit 1 1 -6
 Feel free to contribute in any way.
 
 We appreciate:
-- Fork [this repository](https://github.com/cryptohub-digital/core-unit/fork)
-- Open [pull request](https://github.com/cryptohub-digital/core-unit/pulls)
+- Fork [this repository](https://github.com/cryptohub-digital/core-units/fork)
+- Open [pull request](https://github.com/cryptohub-digital/core-units/pulls)
 - Send us some Øres / ₡ores: [cb7147879011ea207df5b35a24ca6f0859dcfb145999](https://blockindex.net/address/cb7147879011ea207df5b35a24ca6f0859dcfb145999)
 - Star this repository
 

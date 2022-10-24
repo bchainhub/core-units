@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Core Unit Converter",
+  "name": "Core Units Converter",
   "version": "1.0.0",
-  "description": "The ₡ore Unit Converter",
+  "description": "The ₡ore Units Converter",
   "icons": {
     "48": "icons/core-48.png"
   },

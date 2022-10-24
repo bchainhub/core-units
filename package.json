@@ -1,10 +1,10 @@
 {
-  "name": "core-unit",
+  "name": "core-units",
   "version": "1.0.0",
-  "description": "Core unit converter",
+  "description": "Core units converter",
   "main": "dist/index.js",
   "bin": {
-    "core-unit": "bin/core-unit-converter"
+    "core-units": "bin/core-units-converter"
   },
   "scripts": {
     "lint": "standard --fix *.js test/*.js bin/*",
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cryptohub-digital/core-unit"
+    "url": "https://github.com/cryptohub-digital/core-units"
   },
   "bugs": {
-    "url": "https://github.com/cryptohub-digital/core-unit/issues"
+    "url": "https://github.com/cryptohub-digital/core-units/issues"
   },
-  "homepage": "https://github.com/cryptohub-digital/core-unit#readme",
+  "homepage": "https://github.com/cryptohub-digital/core-units#readme",
   "contributors": [
     {
       "name": "CRYPTO ▪ HUB",
@@ -36,7 +36,7 @@
   ],
   "license": {
     "type": "MIT",
-    "url": "https://github.com/cryptohub-digital/core-unit/blob/master/LICENSE"
+    "url": "https://github.com/cryptohub-digital/core-units/blob/master/LICENSE"
   },
   "keywords": [
     "crypto",
